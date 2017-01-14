@@ -1,5 +1,7 @@
 # Kotlin Akka Extensions
 
+[![Build Status](https://travis-ci.org/KotlinBy/kotlin-akka.svg?branch=master)](https://travis-ci.org/KotlinBy/kotlin-akka)
+
 ## About
 
 // TODO
