@@ -1,23 +1,26 @@
 package by.bkug.akka.sample
 
-import akka.actor.Props
 import akka.actor.UntypedActor
-import akka.actor.ActorRef
+import by.bkug.akka.extensions.actorOf
+import by.bkug.akka.extensions.tell
+import by.bkug.akka.sample.Msg.DONE
+import by.bkug.akka.sample.Msg.GREET
 
 class HelloWorld : UntypedActor() {
 
     override fun preStart() {
         // create the greeter actor
-        val greeter = getContext().actorOf(Props.create(Greeter::class.java), "greeter")
+        val greeter = actorOf<Greeter>("greeter")
+
         // tell it to perform the greeting
-        greeter.tell(Greeter.Msg.GREET, getSelf())
+        tell(greeter, GREET)
     }
 
-    override fun onReceive(msg: Any) {
-        if (msg === Greeter.Msg.DONE) {
+    override fun onReceive(msg: Any?) = when (msg) {
+        DONE -> {
             // when the greeter is done, stop this actor and with it the application
-            getContext().stop(getSelf())
-        } else
-            unhandled(msg)
+            context.stop(self)
+        }
+        else -> unhandled(msg)
     }
 }

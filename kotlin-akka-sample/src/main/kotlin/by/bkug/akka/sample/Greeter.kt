@@ -9,7 +9,7 @@ enum class Msg {
 
 class Greeter : UntypedActor() {
 
-    override fun onReceive(msg: Any) = when (msg) {
+    override fun onReceive(msg: Any?) = when (msg) {
         GREET -> {
             println("Hello World!")
             sender.tell(Msg.DONE, self)

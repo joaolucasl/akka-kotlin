@@ -10,14 +10,12 @@ import akka.event.Logging
 
 
 object Main {
-
     @JvmStatic fun main(args: Array<String>) {
         akka.Main.main(arrayOf(HelloWorld::class.java.name))
     }
 }
 
 object Main2 {
-
     @JvmStatic fun main(args: Array<String>) {
         val system = ActorSystem.create("Hello")
         val a = system.actorOf(Props.create(HelloWorld::class.java), "helloWorld")
