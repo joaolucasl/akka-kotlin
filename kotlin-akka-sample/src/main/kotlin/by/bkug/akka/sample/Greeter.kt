@@ -1,19 +1,19 @@
 package by.bkug.akka.sample
 
 import akka.actor.UntypedActor
+import by.bkug.akka.sample.Msg.GREET
+
+enum class Msg {
+    GREET, DONE
+}
 
 class Greeter : UntypedActor() {
 
-    enum class Msg {
-        GREET, DONE
-    }
-
-    override fun onReceive(msg: Any) {
-        if (msg === Msg.GREET) {
+    override fun onReceive(msg: Any) = when (msg) {
+        GREET -> {
             println("Hello World!")
             sender.tell(Msg.DONE, self)
-        } else
-            unhandled(msg)
+        }
+        else -> unhandled(msg)
     }
-
 }
