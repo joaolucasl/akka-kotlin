@@ -1,7 +1,11 @@
 package by.bkug.akka.sample
 
-import java.time.Clock.system
-import java.awt.SystemColor.info
+import akka.actor.ActorRef
+import akka.actor.ActorSystem
+import akka.actor.Props
+import akka.actor.Terminated
+import akka.actor.UntypedActor
+import akka.event.Logging
 
 
 
@@ -28,7 +32,7 @@ object Main2 {
             getContext().watch(ref)
         }
 
-        fun onReceive(msg: Any) {
+        override fun onReceive(msg: Any) {
             if (msg is Terminated) {
                 log.info("{} has terminated, shutting down system", ref.path())
                 getContext().system().terminate()
