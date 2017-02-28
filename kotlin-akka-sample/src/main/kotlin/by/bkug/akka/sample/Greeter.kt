@@ -1,19 +1,22 @@
 package by.bkug.akka.sample
 
-import akka.actor.UntypedActor
+import akka.actor.AbstractActor
 import by.bkug.akka.sample.Msg.GREET
 
 enum class Msg {
     GREET, DONE
 }
 
-class Greeter : UntypedActor() {
-
-    override fun onReceive(msg: Any?) = when (msg) {
-        GREET -> {
-            println("Hello World!")
-            sender.tell(Msg.DONE, self)
-        }
-        else -> unhandled(msg)
+class Greeter : AbstractActor() {
+    override fun createReceive(): AbstractActor.Receive {
+        return receiveBuilder()
+            .matchEquals(GREET, {
+                println("Hello World!")
+                sender.tell(Msg.DONE, self)
+            })
+            .matchAny { msg ->
+                unhandled(msg)
+            }
+            .build()
     }
 }

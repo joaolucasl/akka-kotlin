@@ -19,7 +19,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.1-M04")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.0-rc-91")
     }
 }
 
@@ -41,17 +41,17 @@ subprojects {
     }
 
     dependencies {
-        compile("org.jetbrains.kotlin:kotlin-stdlib:1.1-M04")
-        compile("org.jetbrains.kotlin:kotlin-reflect:1.1-M04")
+        compile("org.jetbrains.kotlin:kotlin-stdlib:1.1.0-rc-91")
+        compile("org.jetbrains.kotlin:kotlin-reflect:1.1.0-rc-91")
         compile("org.jetbrains.kotlinx:kotlinx-coroutines-async:0.2-beta")
 
-        compile("com.typesafe.akka:akka-actor_2.11:2.4.11")
+        compile("com.typesafe.akka:akka-actor_2.12:2.5-M2")
 
         testCompile("junit:junit:4.12")
     }
 }
 
 task(name = "wrapper", type = Wrapper::class) {
-    gradleVersion = "3.3"
+    gradleVersion = "3.4"
     distributionUrl = "http://services.gradle.org/distributions/gradle-$gradleVersion-bin.zip"
 }
