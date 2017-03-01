@@ -13,13 +13,10 @@ import org.gradle.script.lang.kotlin.testCompile
 buildscript {
     repositories {
         jcenter()
-        maven {
-            setUrl("https://dl.bintray.com/kotlin/kotlin-eap-1.1/")
-        }
     }
 
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.0-rc-91")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.0")
     }
 }
 
@@ -35,15 +32,10 @@ subprojects {
 
     repositories {
         jcenter()
-        maven {
-            setUrl("https://dl.bintray.com/kotlin/kotlin-eap-1.1/")
-        }
     }
 
     dependencies {
-        compile("org.jetbrains.kotlin:kotlin-stdlib:1.1.0-rc-91")
-        compile("org.jetbrains.kotlin:kotlin-reflect:1.1.0-rc-91")
-        compile("org.jetbrains.kotlinx:kotlinx-coroutines-async:0.2-beta")
+        compileOnly("org.jetbrains.kotlin:kotlin-stdlib:1.1.0")
 
         compile("com.typesafe.akka:akka-actor_2.12:2.5-M2")
 
