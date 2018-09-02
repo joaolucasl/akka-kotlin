@@ -1,6 +1,6 @@
 # Kotlin Akka Extensions
 
-[![Build Status](https://travis-ci.org/KotlinBy/kotlin-akka.svg?branch=master)](https://travis-ci.org/KotlinBy/kotlin-akka)
+This library is a [fork from the unmantained original repository](https://github.com/Heapy/kotlin-akka). 
 
 ## About
 
